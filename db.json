@@ -27,90 +27,52 @@
       "surname": "mika",
       "email": "dadaad@.com",
       "password": "adaadadad"
-    },
-    {
-      "id": "74a5",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "046a",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "f930",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "e84a",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "a750",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "6657",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "857a",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "39c9",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "4489",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "39f4",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "f5a3",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "45d1",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
     }
-  ]
+   
+  ],
+  "products":[{
+    "name":"White-Bread",
+    "category":"Breads",
+    "price":"60"
+  },
+{
+  "name":"Rye-Bread",
+   "category":"Breads",
+    "price":"90"
+},
+{
+  "name":"Corn-Bread",
+   "category":"Breads",
+    "price":"85"
+},
+{
+  "name":"Wholemeal",
+   "category":"Breads",
+    "price":"100"
+},
+{
+  "name":"Meat",
+  "category":"Burek",
+  "price":"650"
+},
+{
+"name":"Cheese",
+ "category":"Burek",
+  "price":"450"
+},
+{
+  "name":"Bagel",
+  "category":"Pastries",
+  "price":"45"
+},
+{
+"name":"Croissant",
+ "category":"Pastries",
+  "price":"100  "
+}
+
+
+]
+
+  
 }

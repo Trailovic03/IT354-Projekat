@@ -1,0 +1,51 @@
+.Product-Div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+}
+
+.Main-Product-Div {
+    width: 15%;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(72, 66, 66);
+}
+
+h2,
+h3 {
+    color: white;
+}
+
+.style-input-product {
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #eeeded;
+    color: rgb(17, 15, 15);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Product-Button button {
+width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff4500;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Product-Button button:hover {
+    background-color: darkred;
+    transform: scale(1.05);
+}
+
+.Product-Button button:active {
+    transform: scale(0.95);
+}
