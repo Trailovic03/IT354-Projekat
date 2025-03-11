@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,9 @@ function Login() {
     const navigate = useNavigate();
     const [error, setError] = useState(false);
 
-
+    useEffect(()=>{
+        localStorage.setItem("type","undefined");
+    },[])
     function changeEmail(event) {
         setEmail(event.target.value);
     }
@@ -44,8 +46,12 @@ function Login() {
 
             setEmail('');
             setPassword('');
-            if (data.length > 0) {
+            if (data.length > 0 && data[0].type == "user") {
+                localStorage.setItem("type","user")
                 navigate('/HomePage');
+            }else   if (data.length > 0 && data[0].type == "admin") {
+                localStorage.setItem("type","admin")
+                navigate('/AdminPanel');
             }
 
         } else {

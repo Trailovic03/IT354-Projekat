@@ -12,7 +12,9 @@ function ProductView(props) {
         setQuantity(event.target.value);
     }
 
-
+function changePrice(){
+    props.setFullPrice(quantity*props.price + props.currentPrice);
+}
 
 
 
@@ -26,9 +28,9 @@ function ProductView(props) {
 
                 <div className="Product-Div">
                     <h3>Price for 1 pc: {props.price}rsd</h3>
-                    <input className="style-input-product" type="Number" onChange={changeQuantity} value={quantity}></input>
+                    <input className="style-input-product" type="Number" onChange={changeQuantity} min="0" value={quantity}></input>
                     <div className="Product-Button">
-                        <button >Add Product</button>
+                        <button onClick={changePrice}>Add Product</button>
                     </div>
                 </div>
             </div>

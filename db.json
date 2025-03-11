@@ -5,6 +5,7 @@
       "surname": "Trailovic",
       "email": "trajce@gmail.com",
       "password": "mrk1234567",
+      "type":"user",
       "id": "b2e8"
     },
     {
@@ -12,21 +13,16 @@
       "surname": "Vukadinovic",
       "email": "joca@gmail.com",
       "password": "smrk123",
+      "type":"user",
       "id": "464e"
     },
     {
-      "id": "9575",
-      "name": "",
-      "surname": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": "7269",
-      "name": "pera",
-      "surname": "mika",
-      "email": "dadaad@.com",
-      "password": "adaadadad"
+      "name": "Admin",
+      "surname": "Admin",
+      "email": "Admin@gmail.com",
+      "password": "Admin123",
+      "type":"admin",
+      "id": "1"
     }
    
   ],

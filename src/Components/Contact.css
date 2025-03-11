@@ -1,0 +1,17 @@
+.Contact-style{
+    background-color: rgba(38, 36, 36, 0.8);
+    padding: 3%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+.contact-main-div{
+    min-height: 100vh;
+    min-width: 97vw;
+    background-color: rgba(38, 36, 36, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
