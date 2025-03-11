@@ -5,7 +5,7 @@
       "surname": "Trailovic",
       "email": "trajce@gmail.com",
       "password": "mrk1234567",
-      "type":"user",
+      "type": "user",
       "id": "b2e8"
     },
     {
@@ -13,7 +13,7 @@
       "surname": "Vukadinovic",
       "email": "joca@gmail.com",
       "password": "smrk123",
-      "type":"user",
+      "type": "user",
       "id": "464e"
     },
     {
@@ -21,54 +21,58 @@
       "surname": "Admin",
       "email": "Admin@gmail.com",
       "password": "Admin123",
-      "type":"admin",
+      "type": "admin",
       "id": "1"
     }
-   
   ],
-  "products":[{
-    "name":"White-Bread",
-    "category":"Breads",
-    "price":"60"
-  },
-{
-  "name":"Rye-Bread",
-   "category":"Breads",
-    "price":"90"
-},
-{
-  "name":"Corn-Bread",
-   "category":"Breads",
-    "price":"85"
-},
-{
-  "name":"Wholemeal",
-   "category":"Breads",
-    "price":"100"
-},
-{
-  "name":"Meat",
-  "category":"Burek",
-  "price":"650"
-},
-{
-"name":"Cheese",
- "category":"Burek",
-  "price":"450"
-},
-{
-  "name":"Bagel",
-  "category":"Pastries",
-  "price":"45"
-},
-{
-"name":"Croissant",
- "category":"Pastries",
-  "price":"100  "
-}
-
-
-]
-
-  
+  "products": [
+    {
+      "name": "White-Bread",
+      "category": "Breads",
+      "price": "60",
+      "id": "a041"
+    },
+    {
+      "name": "Rye-Bread",
+      "category": "Breads",
+      "price": "90",
+      "id": "eb14"
+    },
+    {
+      "name": "Corn-Bread",
+      "category": "Breads",
+      "price": "85",
+      "id": "6d93"
+    },
+    {
+      "name": "Wholemeal",
+      "category": "Breads",
+      "price": "100",
+      "id": "e7a2"
+    },
+    {
+      "name": "Meat",
+      "category": "Burek",
+      "price": "650",
+      "id": "a56c"
+    },
+    {
+      "name": "Cheese",
+      "category": "Burek",
+      "price": "450",
+      "id": "a53a"
+    },
+    {
+      "name": "Bagel",
+      "category": "Pastries",
+      "price": "45",
+      "id": "b691"
+    },
+    {
+      "name": "Croissant",
+      "category": "Pastries",
+      "price": "100  ",
+      "id": "8a44"
+    }
+  ]
 }
