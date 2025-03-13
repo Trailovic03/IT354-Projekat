@@ -23,6 +23,13 @@
       "password": "Admin123",
       "type": "admin",
       "id": "1"
+    },
+    {
+      "id": "6c14",
+      "name": "",
+      "surname": "trajce@gmail.com",
+      "email": "",
+      "password": "mrk1234567"
     }
   ],
   "products": [

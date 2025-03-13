@@ -1,6 +1,7 @@
 import './HomePage.css'
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { MdLogout } from "react-icons/md";
 import ProductView from "./ProductView";
 import ModalPortal from './ModalPortal';
 
@@ -22,6 +23,13 @@ function AdminPanel() {
         setPrice(event.target.value);
     }
 
+    function LogOut() {
+
+        localStorage.setItem("type", "undefined");
+        navigate('/');
+
+    }
+
     useEffect(() => {
         const profilType = localStorage.getItem("type");
         if (profilType == "user") {
@@ -31,6 +39,31 @@ function AdminPanel() {
         }
         FetchProducts();
     }, [])
+
+    function handleEdit(name,price,category,id){
+        setModalOpen(true);
+    }
+
+
+    async function UpdateProduct(id) {
+        const response = await fetch('http://localhost:3000/products/' + id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, price,category})
+
+
+        });
+        FetchProducts();
+    }
+    async function DeletedProduct(id) {
+        const response = await fetch('http://localhost:3000/products/' + id, {
+            method: 'Delete',
+
+        });
+        FetchProducts();
+    }
 
     async function createProduct() {
         const response = await fetch('http://localhost:3000/products/', {
@@ -61,15 +94,15 @@ function AdminPanel() {
         for (let i = 0; i < products.length; i++) {
             if (products[i].category == "Breads") {
                 breadsElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} ></ProductView>
+                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)} ></ProductView>
                 )
             } else if (products[i].category == "Burek") {
                 burekElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} ></ProductView>
+                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)}></ProductView>
                 )
             } else if (products[i].category == "Pastries") {
                 pastriesElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} ></ProductView>
+                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)}></ProductView>
                 )
             }
 
@@ -98,49 +131,50 @@ function AdminPanel() {
                 <h1 style={{ color: "white" }}>Pekara Trajko</h1>
                 <div style={{ marginRight: "5%", display: "flex", gap: "7px" }}>
                     <button onClick={() => setModalOpen(true)}>Add</button>
-
-                    <ModalPortal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-                        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                            <div>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        value="Burek"
-                                        checked={category === 'Burek'}
-                                        onChange={handleRadioChange}
-                                    />
-                                    Burek
-                                </label>
-                                <br />
-                                <label>
-                                    <input
-                                        type="radio"
-                                        value="Breads"
-                                        checked={category === 'Breads'}
-                                        onChange={handleRadioChange}
-                                    />
-                                    Breads
-                                </label>
-                                <br />
-                                <label>
-                                    <input
-                                        type="radio"
-                                        value="Pastries"
-                                        checked={category === 'Pastries'}
-                                        onChange={handleRadioChange}
-                                    />
-                                    Pastries
-                                </label>
-                            </div>
-                            <input className="style-input-product" placeholder="Enter Name" onChange={changeName} value={name}></input>
-                            <input className="style-input-product" type="number" placeholder="Enter Price" onChange={changePrice} value={price}></input>
-                            <button onClick={createProduct}>Confirm</button>
-                        </div>
-
-
-                    </ModalPortal>
+                    <button onClick={LogOut}><MdLogout size={24} color="white" /></button>
 
                 </div>
+                <ModalPortal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px", color: "white" }}>
+                        <div>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="Burek"
+                                    checked={category === 'Burek'}
+                                    onChange={handleRadioChange}
+                                />
+                                Burek
+                            </label>
+                            <br />
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="Breads"
+                                    checked={category === 'Breads'}
+                                    onChange={handleRadioChange}
+                                />
+                                Breads
+                            </label>
+                            <br />
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="Pastries"
+                                    checked={category === 'Pastries'}
+                                    onChange={handleRadioChange}
+                                />
+                                Pastries
+                            </label>
+                        </div>
+                        <input className="style-input-product" placeholder="Enter Name" onChange={changeName} value={name}></input>
+                        <input className="style-input-product" type="number" placeholder="Enter Price" onChange={changePrice} value={price}></input>
+                        <button onClick={createProduct}>Confirm</button>
+                        <button onClick={UpdateProduct}>Edit</button>
+                    </div>
+
+
+                </ModalPortal>
             </div>
 
 

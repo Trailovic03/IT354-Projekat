@@ -82,7 +82,10 @@ function HomePage() {
                 <div style={{ marginRight: "5%", display: "flex", gap: "7px" }}>
                     <button onClick={() => setModalOpen(true)}><FaShoppingCart size={24} color="white" /></button>
 
-                    <ModalPortal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+                    <button onClick={Contact}><FaPhoneAlt size={24} color="white" /></button>
+                    <button onClick={LogOut}><MdLogout size={24} color="white" /></button>
+                </div>
+                <ModalPortal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
                         <div style={{display:"flex",flexDirection:"column", gap:"10px"}}>
                             <h3 >Full price is: {fullPrice}</h3>
                         <input className="style-input-product" placeholder="Enter Card information"></input>
@@ -91,9 +94,6 @@ function HomePage() {
                 
                     
                     </ModalPortal>
-                    <button onClick={Contact}><FaPhoneAlt size={24} color="white" /></button>
-                    <button onClick={LogOut}><MdLogout size={24} color="white" /></button>
-                </div>
             </div>
 
             {ProductsFor()}
