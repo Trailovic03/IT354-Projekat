@@ -13,8 +13,6 @@ function AdminPanel() {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
 
-
-
     function changeName(event) {
         setName(event.target.value);
     }
@@ -24,10 +22,8 @@ function AdminPanel() {
     }
 
     function LogOut() {
-
         localStorage.setItem("type", "undefined");
         navigate('/');
-
     }
 
     useEffect(() => {
@@ -40,27 +36,9 @@ function AdminPanel() {
         FetchProducts();
     }, [])
 
-    function handleEdit(name,price,category,id){
-        setModalOpen(true);
-    }
-
-
-    async function UpdateProduct(id) {
-        const response = await fetch('http://localhost:3000/products/' + id, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, price,category})
-
-
-        });
-        FetchProducts();
-    }
     async function DeletedProduct(id) {
         const response = await fetch('http://localhost:3000/products/' + id, {
             method: 'Delete',
-
         });
         FetchProducts();
     }
@@ -72,21 +50,21 @@ function AdminPanel() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ name, price, category })
-        }
-        )
+        });
         FetchProducts();
+        setModalOpen(false)
     }
 
     function handleRadioChange(event) {
         setCategory(event.target.value);
     }
 
-
     async function FetchProducts() {
-        const response = await fetch('http://localhost:3000/products/')
+        const response = await fetch('http://localhost:3000/products/');
         const data = await response.json();
         setProducts(data);
     }
+
     function ProductsFor() {
         const breadsElements = [];
         const burekElements = [];
@@ -94,37 +72,60 @@ function AdminPanel() {
         for (let i = 0; i < products.length; i++) {
             if (products[i].category == "Breads") {
                 breadsElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)} ></ProductView>
+                    <ProductView 
+                        key={products[i].id}
+                        name={products[i].name} 
+                        price={products[i].price} 
+                        id={products[i].id} 
+                        category={products[i].category}
+                        DeletedProduct={() => DeletedProduct(products[i].id)}
+                        FetchProducts={FetchProducts}
+                    />
                 )
             } else if (products[i].category == "Burek") {
                 burekElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)}></ProductView>
+                    <ProductView 
+                        key={products[i].id}
+                        name={products[i].name} 
+                        price={products[i].price} 
+                        id={products[i].id} 
+                        category={products[i].category}
+                        DeletedProduct={() => DeletedProduct(products[i].id)}
+                        FetchProducts={FetchProducts}
+                    />
                 )
             } else if (products[i].category == "Pastries") {
                 pastriesElements.push(
-                    <ProductView name={products[i].name} price={products[i].price} id={products[i].id} edit={handleEdit} UpdateProduct={() => UpdateProduct(products[i].id)} DeletedProduct={() => DeletedProduct(products[i].id)}></ProductView>
+                    <ProductView 
+                        key={products[i].id}
+                        name={products[i].name} 
+                        price={products[i].price} 
+                        id={products[i].id} 
+                        category={products[i].category}
+                        DeletedProduct={() => DeletedProduct(products[i].id)}
+                        FetchProducts={FetchProducts}
+                    />
                 )
             }
-
         }
         return <div style={{ backgroundColor: "rgba(38, 36, 36, 0.8)" }}>
             <h2 style={{ color: "white", marginLeft: "15px" }}>Breads</h2>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>{breadsElements}</div>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+                {breadsElements}
+            </div>
             <h2 style={{ color: "white", marginLeft: "15px", borderTop: "5px solid white" }}>Burek</h2>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>{burekElements}</div>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+                {burekElements}
+            </div>
             <h2 style={{ color: "white", marginLeft: "15px", borderTop: "5px solid white" }}>Pastries</h2>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>{pastriesElements}</div>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+                {pastriesElements}
+            </div>
         </div>;
-
     }
-
-
-
-
 
     return (
         <>
-
             <div className="Button-Style">
                 <div></div>
                 <div></div>
@@ -132,7 +133,6 @@ function AdminPanel() {
                 <div style={{ marginRight: "5%", display: "flex", gap: "7px" }}>
                     <button onClick={() => setModalOpen(true)}>Add</button>
                     <button onClick={LogOut}><MdLogout size={24} color="white" /></button>
-
                 </div>
                 <ModalPortal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "10px", color: "white" }}>
@@ -170,20 +170,11 @@ function AdminPanel() {
                         <input className="style-input-product" placeholder="Enter Name" onChange={changeName} value={name}></input>
                         <input className="style-input-product" type="number" placeholder="Enter Price" onChange={changePrice} value={price}></input>
                         <button onClick={createProduct}>Confirm</button>
-                        <button onClick={UpdateProduct}>Edit</button>
                     </div>
-
-
                 </ModalPortal>
             </div>
-
-
-
-
-
-
-
             {ProductsFor()}
         </>
     );
-} export default AdminPanel;
+}
+export default AdminPanel;

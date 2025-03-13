@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-function ModalPortal({ isOpen, onClose, children }) {
+function ModalPortal({ isOpen, children }) {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div style={styles.overlay}>
       <div style={styles.modal}>
         {children}
-        <button onClick={onClose} style={styles.closeButton}>Confirm</button>
       </div>
     </div>,
     document.getElementById("modal-root")
